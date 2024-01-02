@@ -30,4 +30,4 @@ This is a full-stack web application for a game store. It includes a frontend bu
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone <repository_url>
+   git clone https://github.com/Shafiquedev256/Games-store
