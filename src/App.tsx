@@ -1,40 +1,17 @@
-import {useEffect,useState} from "react"
-import {Routes, Route} from "react-router-dom"
+import {useEffect} from "react" 
+import {useDispatch,useSelector} from "react-redux"
+import {Routes, Route} from "react-router-dom" 
+import {fetchGames} from "./redux/getGamesSlice" 
+import type {RootState,AppDispatch} from "./redux/store"
 import Homepage from "./pages/homepage"
 import CartPage from "./pages/cartPage"
 import Category_page from "./pages/categoryPage"
 
-type ApiData = {
-      title: string,
-      img: string,
-      description: string,
-      category: string,
-      cost: string,
-      trailer: string,
-      platform: string,
-      release: string,
-      publisher: string,
-  
-}[]
-
 function App() {
-  
-const [data,setData] = useState<ApiData>([])
+  const dispatch = useDispatch<AppDispatch>() 
+  const data = useSelector((state:RootState)=>state.GamesReducer.all)
    useEffect(() => {
-    const getData = async () => {
-      try {
-        const fetchEl = await fetch(import.meta.env.VITE_SERVER_URL);
-        if (!fetchEl.ok) {
-          throw new Error('Network response was not ok.');
-        }
-        const response = await fetchEl.json();
-        setData(response);
-      } catch (error) {
-        // Handle fetch errors here
-        console.error('Error fetching data:', error);
-      }
-    };
-    getData()
+dispatch(fetchGames())
    },[])
 
   return (
