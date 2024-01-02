@@ -23,7 +23,7 @@ const [data,setData] = useState<ApiData>([])
    useEffect(() => {
     const getData = async () => {
       try {
-        const fetchEl = await fetch("https://gamesapi-8lyv.onrender.com/");
+        const fetchEl = await fetch(import.meta.env.VITE_SERVER_URL);
         if (!fetchEl.ok) {
           throw new Error('Network response was not ok.');
         }
