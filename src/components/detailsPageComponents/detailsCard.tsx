@@ -1,5 +1,5 @@
  import {ApiData} from "../../redux/getGamesSlice"
-  
+  import stars from "../../assets/bookmark-favorite-rating-star-svgrepo-com.svg"
   type Selected = {
     selected: ApiData
   }
@@ -13,10 +13,10 @@
     <div className="p-1 text-sm border border-[1px] border-white w-fit">{selected.platform}</div> 
     <div className="my-2 flex flex-row items-center justify-evenly w-[95%] md:w-[290px]">
     <span>4.5</span>
-    <img src="/src/assets/bookmark-favorite-rating-star-svgrepo-com.svg"/> 
-    <img src="/src/assets/bookmark-favorite-rating-star-svgrepo-com.svg"/>  
-    <img src="/src/assets/bookmark-favorite-rating-star-svgrepo-com.svg"/> 
-    <img src="/src/assets/bookmark-favorite-rating-star-svgrepo-com.svg"/>  
+    <img src={stars}/> 
+    <img src={stars}/>  
+    <img src={stars}/> 
+    <img src={stars}/>  
     <img src="/src/assets/badge-favorite-rating-star-svgrepo-com.svg"/> 
     <span>123k rating </span></div> 
     <div className="text-2xl font-mono">{selected.cost}</div> 
