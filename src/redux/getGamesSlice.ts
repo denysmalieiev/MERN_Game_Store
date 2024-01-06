@@ -34,7 +34,7 @@ const initialState:Games = {
 }
 
 export  const fetchGames  = createAsyncThunk("fetch/games",()=>{
-        const res = fetch(import.meta.env.VITE_SERVER_URL).then(data => data.json());
+        const res = fetch("https://gamesapi-8lyv.onrender.com/").then(data => data.json());
     return res;
 }) 
 

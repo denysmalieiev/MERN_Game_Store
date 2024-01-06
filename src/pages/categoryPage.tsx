@@ -1,32 +1,27 @@
-import {Header} from "../components/header"
-import {useMemo} from "react"
+import {Header} from "../components/header"  
+import { useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";  
+import { useEffect  } from "react" 
+import { RootState, AppDispatch } from "../redux/store"; 
+import { fetchGames } from "../redux/getGamesSlice";
 import Display_games from "../components/reusable/displayGames"
 
-type Props = {
- category: string,
- games: {
-title: string,
-      img: string,
-      description: string,
-      category: string,
-      cost: string,
-      trailer: string,
-      platform: string,
-      release: string,
-      publisher: string,
- }[]
-}
 
-const Category_page = ({category,games}:Props)=>{
-  const filteredGames = useMemo(()=>{
-    return   games.filter((item)=>item.category==category)
-  },[games])
-  
+
+const Category_page = ()=>{  
+const {category} = useParams()
+  const dispatch = useDispatch<AppDispatch>()
+const dataEl = useSelector((state:RootState)=>state.GamesReducer.all) 
+  useEffect(()=>{
+ dispatch(fetchGames())
+  },[])
+
+const filtered = dataEl.filter(item=>item.category===category)
 
   return (
     <>
     <Header/>
-    <Display_games games={filteredGames}/>
+    <Display_games games={filtered}/>
     </>
     )
 }

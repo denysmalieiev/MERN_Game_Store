@@ -1,4 +1,4 @@
-
+import {useNavigate} from "react-router-dom"
 
 type Props = {
   src:string,
@@ -8,13 +8,14 @@ type Props = {
 }
 
 const Game_card = (props:Props)=>{
-  
-  {/*      <Game_card src={} title={} cost={} category={}/>*/}
+  const navigate = useNavigate()
   return (
     <>
     <div className="flex flex-col  w-fit p-1 md:p-2 rounded shadow-sm bg-white justify-between">
     <div className="flex flex-col w-40 md:w-72  rounded  bg-white justify-between md:flex-row ">
-    <img src={props.src} className="w-40 md:w-3/5 md:mr-1 h-32 md:h-40 rounded"/>
+    <img src={props.src} className="w-40 md:w-3/5 md:mr-1 h-32 md:h-40 rounded" onClick={ ()=>{
+ navigate(`/details/${props.title}`)
+ }}/>
     <div className="flex flex-col md:w-2/5 justify-between">
     <div className="font-bold text-sm text-gray-600 ">{props.title}</div>
     <div className="text-sm text-gray-500 font-light">{props.category}</div>

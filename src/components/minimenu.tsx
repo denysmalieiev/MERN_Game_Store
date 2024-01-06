@@ -18,7 +18,7 @@ export const MiniMenu = ()=>{
         <span className="category_menu_span">Race</span>
     </div>
     <div onClick={()=>{
-      navigate("/category/Sports")
+      navigate("/category/sports")
     }} className="category_menu bg-[url('https://media.istockphoto.com/id/1254450615/photo/man-playing-video-game-at-home-sitting-on-coach-sofa-in-front-of-television-with-play-game.jpg?s=612x612&w=0&k=20&c=H2wv-3F63x9Kkb4QNjoyPdulA2A2gh5pwTrTNpB-FYs=')]">
         <span className="category_menu_span">Sports</span>
     </div>

@@ -1,42 +1,20 @@
- import {useState,useEffect} from "react"
+ import {useEffect} from "react" 
+import { useSelector, useDispatch } from "react-redux";   
+import { RootState, AppDispatch } from "../redux/store";  
+import { fetchGames } from "../redux/getGamesSlice";
  import {Header} from "../components/header"
 import {MiniMenu} from "../components/minimenu"
 import {Promo} from "../components/promo"
 import Display_games from "../components/reusable/displayGames"
 
-type ApiData = {
-      title: string,
-      img: string,
-      description: string,
-      category: string,
-      cost: string,
-      trailer: string,
-      platform: string,
-      release: string,
-      publisher: string,
-  
-}[]
-
 
 
  export const HomePage = ()=>{
-   const [data,setData] = useState<ApiData>([])
-   useEffect(() => {
-    const getData = async () => {
-      try {
-        const fetchEl = await fetch("https://gamesapi-8lyv.onrender.com/");
-        if (!fetchEl.ok) {
-          throw new Error('Network response was not ok.');
-        }
-        const response = await fetchEl.json();
-        setData(response);
-      } catch (error) {
-        // Handle fetch errors here
-        console.error('Error fetching data:', error);
-      }
-    };
-    getData()
-   },[])
+   const dispatch = useDispatch<AppDispatch>()
+  const data = useSelector((state:RootState)=>state.GamesReducer.all) 
+  useEffect(()=>{ 
+dispatch(fetchGames())
+  },[])
    
    const trendingGames = data.filter((_item,index)=>index<6)
 const popularGames = data.filter((_item,index)=>index<15&&index>9)
