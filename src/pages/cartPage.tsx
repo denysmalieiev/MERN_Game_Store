@@ -17,7 +17,7 @@ if(storedCart){
   },[storedCart])
  
   return(
-    <section className="w-screen h-screen bg-gray-100">
+    <section className="w-screen bg-gray-100">
     <Header/>
     <div className="font-bold text-sm text-gray-400 p-2">CART SUMMARY</div>
     <div className="flex flex-row justify-between p-2 bg-white shadowEl shadow-[rgba(0, 0, 0, .2)] ">

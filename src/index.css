@@ -6,4 +6,7 @@
 }
 .category_menu_span{
   @apply text-white relative  text-center bg-black w-[100%] h-[100%] flex items-center justify-center bg-opacity-30
+} 
+.btn{
+  @apply font-bold    text-white rounded 
 }

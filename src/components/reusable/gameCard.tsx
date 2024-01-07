@@ -21,7 +21,7 @@ useEffect(()=>{
  localStorage.setItem('cart',JSON.stringify(array))
 },[localStore])
 
-  const handleClick = () => {
+  const handleClick = () => { 
     setLocalStore([data]);
   };
 
