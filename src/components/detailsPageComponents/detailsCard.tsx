@@ -1,5 +1,6 @@
  import {ApiData} from "../../redux/getGamesSlice"
-  import stars from "../../assets/bookmark-favorite-rating-star-svgrepo-com.svg"
+  import stars from "../../assets/bookmark-favorite-rating-star-svgrepo-com.svg" 
+  import star from "../../assets/badge-favorite-rating-star-svgrepo-com.svg"
   type Selected = {
     selected: ApiData
   }
@@ -17,7 +18,7 @@
     <img src={stars}/>  
     <img src={stars}/> 
     <img src={stars}/>  
-    <img src="/src/assets/badge-favorite-rating-star-svgrepo-com.svg"/> 
+    <img src={star}/>  
     <span>123k rating </span></div> 
     <div className="text-2xl font-mono">{selected.cost}</div> 
     <button className="bg-gray-600 my-5 w-[16rem] p-3 text-center text-gray-900 font-bold bg-opacity-100 rounded-full">Add to Cart</button>
