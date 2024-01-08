@@ -11,7 +11,7 @@ const storedCart = localStorage.getItem('cart');
   useEffect(()=>{
     try{
 if(storedCart){
-  setData(JSON.parse(storedCart))
+  setData(JSON.parse(storedCart)) 
 }else {setData([])} 
 }catch(err){alert(err)}
   },[storedCart])
@@ -27,7 +27,7 @@ if(storedCart){
     <div className="font-bold text-sm text-gray-400 p-2">CART({data.length})</div>
    
    <section>
-   <Cart_card data={data}/>
+   <Cart_card data={data} setData={setData}/>
    </section>
    
     <div className="w-screen flex items-center justify-center">
