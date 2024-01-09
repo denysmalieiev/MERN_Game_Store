@@ -1,19 +1,21 @@
 import {Header} from "../components/header" 
 import {useState,useEffect} from "react"
- import {ApiData} from "../redux/getGamesSlice" 
+ import {Count} from "../components/reusable/gameCard" 
  import {Cart_card} from "../components/cart/cartCard"
  
  
  
  const CartPage = ()=>{ 
-  const [data,setData] = useState<Array<ApiData>>([]) 
+  const [data,setData] = useState<Count[]>([]) 
 const storedCart = localStorage.getItem('cart'); 
+
   useEffect(()=>{
     try{
 if(storedCart){
   setData(JSON.parse(storedCart)) 
 }else {setData([])} 
-}catch(err){alert(err)}
+}catch(err){alert(err)} 
+
   },[storedCart])
  
   return(

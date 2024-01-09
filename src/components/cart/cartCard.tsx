@@ -1,11 +1,32 @@
- import {ApiData} from "../../redux/getGamesSlice"  
  import { Qualifier }  from "./cartQualifier" 
- 
  type Props = { 
-   data:ApiData[],
+   data:{
+      title: string,
+      img: string,
+      description: string,
+      category: string,
+      cost: string,
+      trailer: string,
+      platform: string,
+      release: string,
+      publisher: string,
+      count:number
+}[],
    setData: any
  }
- export const Cart_card = ({data,setData}:Props)=>{  
+ 
+ export const Cart_card = ({data,setData}:Props)=>{   
+   
+   const deleteItem = (title:string)=>{ 
+    
+try{
+  const filteredData = data.filter(item => item.title !== title);
+
+  localStorage.setItem('cart',JSON.stringify(filteredData)) 
+  setData(filteredData)
+    }catch(err){alert(err)}
+   }
+   
   return(
     <>
     <div>
@@ -22,15 +43,8 @@
     </div>
     
     <div className="flex flex-row justify-between pt-1">
-    <button className="btn bg-red-600 text-xs p-1" onClick={()=>{ 
-    try{
-  const filteredData = data.filter(itemEl => itemEl.title !== item.title);
-
-  localStorage.setItem('cart',JSON.stringify(filteredData)) 
-  setData(filteredData)
-    }catch(err){alert(err)}
-  } }>remove</button> 
-    <Qualifier title={item.title}/>
+    <button className="btn bg-red-600 text-xs p-1" onClick={()=>{deleteItem(item.title)}}>remove</button> 
+    <Qualifier data={item}/>
     </div>
     </section>
         )

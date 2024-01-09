@@ -3,11 +3,23 @@ import { useState,useEffect } from "react";
 import {ApiData} from "../../redux/getGamesSlice";
 type Props = {
   data:ApiData
+} 
+export type Count = {
+      title: string,
+      img: string,
+      description: string,
+      category: string,
+      cost: string,
+      trailer: string,
+      platform: string,
+      release: string,
+      publisher: string,
+      count:number
 }
 
 const Game_card = ({data}:Props)=>{
   const navigate = useNavigate()  
-  const [localStore, setLocalStore] = useState<ApiData[]>([]);
+  const [localStore, setLocalStore] = useState<Count[]>([]);
 
 useEffect(()=>{  
  
@@ -15,10 +27,8 @@ useEffect(()=>{
   
  const storedCart = localStorage.getItem('cart')  
  
- if(storedCart){ 
-   
-   const storedCartEl:ApiData[] = JSON.parse(storedCart) 
-   
+ if(storedCart){
+   const storedCartEl:ApiData[] = JSON.parse(storedCart);
    storedCartEl.forEach(item=>{ 
      if(item.title!==data.title){
      array.push(item)}
@@ -28,7 +38,8 @@ useEffect(()=>{
 },[localStore])
 
   const handleClick = () => { 
-    setLocalStore([data]);
+    const newData = {...data,count:1}
+    setLocalStore([newData]);
   };
 
   return (
