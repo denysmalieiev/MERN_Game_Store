@@ -13,9 +13,9 @@ const decrement = ()=>{
   }
  return(
     <div className="flex flex-row w-20 items-center">
-    <button className="btn bg-purple-500 w-7 p-1" onClick={increment}>+</button>
+    <button className="btn bg-purple-500 md:w-10 w-7  p-1 md:p-2" onClick={increment}>+</button>
     <div className="p-1">{data.count}</div>
-    <button className="btn bg-purple-500 w-7 p-1" onClick={decrement}>-</button>
+    <button className="btn bg-purple-500 md:w-10 w-7  p-1 md:p-2" onClick={decrement}>-</button>
     </div>
    )
 }

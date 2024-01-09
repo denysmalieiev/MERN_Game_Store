@@ -35,7 +35,7 @@ try{
         return(
  <section key={item.title} className="p-2 bg-white shadow-sm  my-4 mx-2 rounded">
     <div className="flex flex-row ">
-    <img src={item.img} className="w-36 rounded"/>
+    <img src={item.img} className="w-36 md:w-44 rounded"/>
     <div className="ml-2">
     <div className="text-sm text-gray-400">{item.title}</div>
     <div className="font-bold">{item.cost}</div>
@@ -43,7 +43,7 @@ try{
     </div>
     
     <div className="flex flex-row justify-between pt-1">
-    <button className="btn bg-red-600 text-xs p-1" onClick={()=>{deleteItem(item.title)}}>remove</button> 
+    <button className="btn bg-red-600 md:text-sm text-xs p-1 md:p-2" onClick={()=>{deleteItem(item.title)}}>remove</button> 
     <Qualifier data={item}/>
     </div>
     </section>
