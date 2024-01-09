@@ -9,13 +9,19 @@ const Game_card = ({data}:Props)=>{
   const navigate = useNavigate()  
   const [localStore, setLocalStore] = useState<ApiData[]>([]);
 
-useEffect(()=>{ 
-  const array:ApiData[] = [...localStore]
- const storedCart = localStorage.getItem('cart') 
- if(storedCart){
+useEffect(()=>{  
+ 
+  const array:ApiData[] = [...localStore] 
+  
+ const storedCart = localStorage.getItem('cart')  
+ 
+ if(storedCart){ 
+   
    const storedCartEl:ApiData[] = JSON.parse(storedCart) 
-   storedCartEl.forEach(item=>{
-     array.push(item)
+   
+   storedCartEl.forEach(item=>{ 
+     if(item.title!==data.title){
+     array.push(item)}
    })
  } 
  localStorage.setItem('cart',JSON.stringify(array))
