@@ -1,9 +1,11 @@
 import {useNavigate} from "react-router-dom" ;
-import { useState,useEffect } from "react";
 import {ApiData} from "../../redux/getGamesSlice";
+import {AddToCartBtn} from "./addToCartBTN"
+
 type Props = {
   data:ApiData
 } 
+
 export type Count = {
       title: string,
       img: string,
@@ -19,29 +21,7 @@ export type Count = {
 
 const Game_card = ({data}:Props)=>{
   const navigate = useNavigate()  
-  const [localStore, setLocalStore] = useState<Count[]>([]);
-
-useEffect(()=>{  
- 
-  const array:ApiData[] = [...localStore] 
   
- const storedCart = localStorage.getItem('cart')  
- 
- if(storedCart){
-   const storedCartEl:ApiData[] = JSON.parse(storedCart);
-   storedCartEl.forEach(item=>{ 
-     if(item.title!==data.title){
-     array.push(item)}
-   })
- } 
- localStorage.setItem('cart',JSON.stringify(array))
-},[localStore])
-
-  const handleClick = () => { 
-    const newData = {...data,count:1}
-    setLocalStore([newData]);
-  };
-
   return (
     <>
     <div className="flex flex-col  w-fit p-1 md:p-2 rounded shadow-sm bg-white justify-between">
@@ -55,7 +35,7 @@ useEffect(()=>{
     <div className="text-sm font-bold text-gray-500">{data.cost}</div>
     </div>
     </div>
-    <button className=" bg-purple-500 w-50 p-2 text-sm rounded text-white font-bold bottom-0"  onClick={handleClick}>+CART</button>
+    <AddToCartBtn data={data} Class="bg-purple-500 w-50 p-2 text-sm rounded text-white font-bold bottom-0"/>
     </div>
     </>
     )
