@@ -10,9 +10,9 @@ type Props = {
 export const AddToCartBtn = ({ data, Class }: Props) => {
   
 
-  const handleClick = () => {
-    const storedCart = localStorage.getItem('cart');
+  const handleClick = () => { 
     let updatedCart: ApiData[] = [];
+    const storedCart = localStorage.getItem('cart');
     if (storedCart) {
       updatedCart = JSON.parse(storedCart);
     }

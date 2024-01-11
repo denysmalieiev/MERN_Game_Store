@@ -1,4 +1,4 @@
- import { Qualifier }  from "./cartQualifier" 
+ import { Qualifier }  from "./cartQualifier"  
  type Props = { 
    data:{
       title: string,
@@ -18,13 +18,10 @@
  export const Cart_card = ({data,setData}:Props)=>{   
    
    const deleteItem = (title:string)=>{ 
-    
-try{
   const filteredData = data.filter(item => item.title !== title);
 
   localStorage.setItem('cart',JSON.stringify(filteredData)) 
   setData(filteredData)
-    }catch(err){alert(err)}
    }
    
   return(
@@ -44,7 +41,7 @@ try{
     
     <div className="flex flex-row justify-between pt-1">
     <button className="btn bg-red-600 md:text-sm text-xs p-1 md:p-2" onClick={()=>{deleteItem(item.title)}}>remove</button> 
-    <Qualifier data={item}/>
+    <Qualifier data={item} cart={data} setData={setData}/>
     </div>
     </section>
         )

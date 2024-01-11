@@ -6,18 +6,24 @@ import {useState,useEffect} from "react"
  
  
  const CartPage = ()=>{ 
-  const [data,setData] = useState<Count[]>([]) 
+   const [data,setData]=useState<Count[]>([]) 
+   const [subtotal,setSubtotal]=useState(0)
 const storedCart = localStorage.getItem('cart'); 
 
-  useEffect(()=>{
-    try{
-if(storedCart){
-  setData(JSON.parse(storedCart)) 
-}else {setData([])} 
-}catch(err){alert(err)} 
-
-  },[storedCart])
+useEffect(()=>{ 
+  let total = 0
+  if(storedCart){
+    
+JSON.parse(storedCart).forEach((item:Count)=>{
+const itemCost = parseFloat(item.cost.replace('$', ''))*item.count;
+total+=itemCost
+   })
+setSubtotal(total)
+    setData(JSON.parse(storedCart))
+  }
+},[storedCart])
  
+
   return(
     <> 
      <Header/>
@@ -27,10 +33,10 @@ if(storedCart){
     <div className="font-bold text-sm text-gray-400 p-2">CART SUMMARY</div>
     <div className="flex flex-row justify-between p-2 bg-gray-100 shadowEl shadow-[rgba(0, 0, 0, .2)] ">
     <div className="font-bold text-sm text-[rgba(0, 0, 0, .2)]">subtotal</div>
-    <div className="font-bold ml-2">$1000</div>
+    <div className="font-bold ml-2">${subtotal}</div>
     </div>
     <div className="font-bold text-sm text-gray-400 p-2">CART({data.length})</div> 
-    <button className=" md:bg-purple-500 md:w-[100%] md:p-3 md:m-2 md:rounded md:text-white md:font-bold hidden  md:block ">check out (USD 20000)</button>
+    <button className=" md:bg-purple-500 md:w-[100%] md:p-3 md:m-2 md:rounded md:text-white md:font-bold hidden  md:block ">check out (USD {subtotal})</button>
    </div> 
    
    <section className="md:w-3/5">
