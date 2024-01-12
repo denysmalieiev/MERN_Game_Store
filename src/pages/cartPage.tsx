@@ -1,4 +1,5 @@
-import {Header} from "../components/header" 
+import {Header} from "../components/header"  
+import {useNavigate} from "react-router-dom"
 import {useState,useEffect} from "react"
  import {Count} from "../components/reusable/gameCard" 
  import {Cart_card} from "../components/cart/cartCard"
@@ -6,7 +7,9 @@ import {useState,useEffect} from "react"
  
  
  const CartPage = ()=>{ 
-   const [data,setData]=useState<Count[]>([]) 
+   const [data,setData]=useState<Count[]>([])  
+   const navigate = useNavigate()
+   const isLogenIn = true
    const [subtotal,setSubtotal]=useState(0)
 const storedCart = localStorage.getItem('cart'); 
 
@@ -23,6 +26,13 @@ setSubtotal(total)
   }
 },[storedCart])
  
+const handleCheckout = ()=>{
+  if(!isLogenIn){
+    navigate("/user/signin")
+  }else {
+    navigate("/payments/checkout")
+  }
+}
 
   return(
     <> 
@@ -36,7 +46,7 @@ setSubtotal(total)
     <div className="font-bold ml-2">${subtotal}</div>
     </div>
     <div className="font-bold text-sm text-gray-400 p-2">CART({data.length})</div> 
-    <button className=" md:bg-purple-500 md:w-[100%] md:p-3 md:m-2 md:rounded md:text-white md:font-bold hidden  md:block ">check out (USD {subtotal})</button>
+    <button className=" md:bg-purple-500 md:w-[100%] md:p-3 md:m-2 md:rounded md:text-white md:font-bold hidden  md:block " onClick={handleCheckout}>check out (USD {subtotal})</button>
    </div> 
    
    <section className="md:w-3/5">
@@ -44,7 +54,7 @@ setSubtotal(total)
    </section>
    
     <div className="w-screen flex items-center justify-center md:hidden">
-    <button className=" bg-purple-500 w-64 p-3 mt-3 rounded text-white font-bold md:hidden ">check out</button>
+    <button className=" bg-purple-500 w-64 p-3 mt-3 rounded text-white font-bold md:hidden " onClick={handleCheckout}>check out</button>
     </div>
     </section> 
     </>
