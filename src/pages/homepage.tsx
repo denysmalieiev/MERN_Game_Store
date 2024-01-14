@@ -22,7 +22,7 @@ const recommendedGames = data.filter((_item,index)=>index>10)
 const upComingGames = data.filter((_item,index)=>index<10&&index>5)
    
    return (
-     <div className="overflow-hidden">
+     <div className="overflow-hidden w-screen">
         <Header/>
         <div className="md:flex md:flex-row-reverse ">
         <Promo/>
