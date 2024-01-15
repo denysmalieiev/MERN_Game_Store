@@ -1,4 +1,4 @@
-
+import {Link} from "react-router-dom"
 const SignUpPage = () => {
   const handleSignUp = () => {
     // Implement sign-up logic here
@@ -59,9 +59,9 @@ const SignUpPage = () => {
         <div className="mt-4 text-center">
           <p className="text-sm text-gray-700">
             Already have an account?{' '}
-            <a href="/user/signin" className="text-purple-700 font-semibold">
+            <Link to="/user/signin" className="text-purple-700 font-semibold">
               Sign in here
-            </a>
+            </Link>
           </p>
         </div>
       </div>

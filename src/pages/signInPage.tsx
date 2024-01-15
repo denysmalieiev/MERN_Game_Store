@@ -1,4 +1,4 @@
-
+import {Link} from "react-router-dom"
 
 const SignInPage = () => {
   const handleSignIn = () => {
@@ -47,9 +47,9 @@ const SignInPage = () => {
         <div className="mt-4 text-center">
           <p className="text-sm text-gray-700">
             New to Game Store?{' '}
-            <a href="/signup" className="text-purple-700 font-semibold">
+            <Link to="/signup" className="text-purple-700 font-semibold">
               Create an account
-            </a>
+            </Link>
           </p>
         </div>
       </div>
