@@ -11,13 +11,13 @@ function App() {
 
   return (
     <>
-    <div className="h-[100%] bg-gray-100">
+    <div className="h-[100%] bg-blue-100">
     <Routes> 
     <Route path="/" element={<Homepage/>}/>
     <Route path="/cart" element={<CartPage/>}/> 
 <Route path="/category/:category" element={<Category_page/>}/>
 <Route path="/user/signin" element={<SignInPage/>}/> 
-<Route path="/user/signup" element={<SignUpPage/>}/> 
+<Route path="/signup" element={<SignUpPage/>}/> 
 <Route path="/payments/checkout" element={<CheckoutForm/>}/>
         <Route
           path="/details/:title"

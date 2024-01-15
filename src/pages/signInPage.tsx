@@ -47,7 +47,7 @@ const SignInPage = () => {
         <div className="mt-4 text-center">
           <p className="text-sm text-gray-700">
             New to Game Store?{' '}
-            <a href="/user/signup" className="text-purple-700 font-semibold">
+            <a href="/signup" className="text-purple-700 font-semibold">
               Create an account
             </a>
           </p>
