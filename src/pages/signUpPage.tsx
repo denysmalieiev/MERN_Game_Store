@@ -7,7 +7,7 @@ const SignUpPage = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded shadow-md w-96">
-        <h2 className="text-4xl font-extrabold text-center mb-6 text-purple-700">Join Game Store</h2>
+        <h2 className="text-4xl font-extrabold text-center mb-6 text-blue-700">Join Game Store</h2>
         <form>
           <div className="mb-6">
             <label htmlFor="fullName" className="block text-sm font-semibold mb-2 text-gray-800">
@@ -51,7 +51,7 @@ const SignUpPage = () => {
           <button
             type="button"
             onClick={handleSignUp}
-            className="bg-purple-700 text-white w-full py-2 rounded hover:bg-purple-800 focus:outline-none"
+            className="bg-blue-700 text-white w-full py-2 rounded hover:bg-blue-800 focus:outline-none"
           >
             Sign Up
           </button>
