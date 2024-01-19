@@ -1,10 +1,11 @@
-import {Link} from "react-router-dom" 
+import {Link} from "react-router-dom"  
+import {useAuth} from "../context/authContext" 
 import {useNavigate} from "react-router-dom" ;
 import {SearchBar} from "./search"
 import cartImg from "../assets/cart-shopping-fast-svgrepo-com.svg"
 export const Header = ()=>{ 
 const navigate = useNavigate()
-  const isLogedin = false 
+  const isLogedin = useAuth().isLogedin()
   const signIn = ()=>{
     navigate("/user/signin")
   }
@@ -17,7 +18,7 @@ const navigate = useNavigate()
       <SearchBar/> 
       </div>
        <div className=" flex flex-row justify-between items-center md:w-36 w-28"> 
-    {!isLogedin&&(<button className="bg-purple-600 text-xs font-bold rounded text-white p-2 ml-2 shadow-md" onClick={signIn}>Log in</button> )}
+    {!isLogedin?(<button className="bg-purple-600 text-xs font-bold rounded text-white p-2 ml-2 shadow-md" onClick={signIn}>Log in</button> ):(<div className="p-2 ml-2 text-white select-none">LogedIn</div>)}
     <Link to="/cart"><img src={cartImg} /></Link> 
     </div>
     </section> 

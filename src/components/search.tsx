@@ -8,8 +8,8 @@ export const SearchBar = ()=>{
   const navigate = useNavigate()
   return(
     <>
-    <div className="shadow-md p-2 items-center flex flex-row relative md:shadow-blue-100 bg-white ">
-    <input className="md:w-80  outline-none rounded bg-opacity-80 bg-purple-100 placeholder-purple-600  md:bg-white p-2 w-screen" value={input} placeholder="search..." onChange={(e:any)=>setInput(e.target.value)}/> 
+    <div className=" p-2 items-center flex flex-row relative  bg-white ">
+    <input className="md:w-80  outline-none rounded bg-opacity-80 bg-purple-100 placeholder-purple-600   p-2 w-screen" value={input} placeholder="search..." onChange={(e:any)=>setInput(e.target.value)}/> 
     { input!==""&&(
     <div className="w-[90%] absolute top-20 h-30 bg-gray-100 fixed rounded p-3 z-30">
     <ul>

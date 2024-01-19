@@ -41,7 +41,7 @@
     
     <div className="flex flex-row justify-between pt-1">
     <button className="btn bg-red-600 md:text-sm text-xs p-1 md:p-2" onClick={()=>{deleteItem(item.title)}}>remove</button> 
-    <Qualifier data={item} cart={data} setData={setData}/>
+    <Qualifier data={item} cart={data} setData={setData} del={deleteItem}/>
     </div>
     </section>
         )

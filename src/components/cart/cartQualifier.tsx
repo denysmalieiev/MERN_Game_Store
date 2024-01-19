@@ -3,13 +3,14 @@ import {useEffect,useState} from "react"
 type Props = {
   data:Count,
   cart: Count[],
-  setData:any
+  setData:any,
+  del:(title:string)=>void
 }
-export const Qualifier = ({data,cart,setData}:Props)=>{  
+export const Qualifier = ({data,cart,setData,del}:Props)=>{  
   
   const [count,setCount] = useState(data.count)
   
-  useEffect(()=>{
+  useEffect(()=>{ 
 const updatedCart = cart.map(item => {
       if (item.title === data.title) {
         return { ...item, count, };
@@ -26,7 +27,10 @@ const updatedCart = cart.map(item => {
     }
   
 const decrement = ()=>{
-    setCount(count-1)
+    setCount(count-1)  
+if(count===1){
+      del(data.title)
+    }
   }
  return(
     <div className="flex flex-row w-20 items-center">

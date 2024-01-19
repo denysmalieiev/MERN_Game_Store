@@ -24,7 +24,7 @@ const Game_card = ({data}:Props)=>{
   
   return (
     <>
-    <div className="flex flex-col  w-fit   rounded shadow-sm bg-white justify-between">
+    <div className="flex flex-col  w-fit   rounded shadow-sm bg-white justify-between md:m-5">
     <div className="flex flex-col w-40  md:w-72 rounded  bg-white justify-between ">
     <img src={data.img} className="w-40 md:w-[100%] md:mr-1 h-32 md:h-56 rounded-t" onClick={ ()=>{
  navigate(`/details/${data.title}`)

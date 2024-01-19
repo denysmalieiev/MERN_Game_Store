@@ -6,7 +6,7 @@ export const MiniMenu = ()=>{
   return(
     <>
    
-   <section className="md:w-2/5">
+   <section className="md:w-2/5 md:bg-gray-200">
   <div className="w-[100%] grid grid-cols-2 gap-1 bg-black md:bg-gray-200 md:flex md:flex-col p-1 md:pt-0" > 
     <div onClick={()=>navigate("/category/Action")
     } className="bg-[url('https://media.istockphoto.com/id/816841586/photo/close-up-of-man-shooting-with-machine-gun.jpg?s=612x612&w=0&k=20&c=JhG98k0bEKoQLHaJJw80d4m0m7_F9cdFJVY0nqkK00s=')] category_menu ">

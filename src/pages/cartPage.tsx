@@ -9,7 +9,6 @@ import {useState,useEffect} from "react"
  const CartPage = ()=>{ 
    const [data,setData]=useState<Count[]>([])  
    const navigate = useNavigate()
-   const isLogenIn = true
    const [subtotal,setSubtotal]=useState(0)
 const storedCart = localStorage.getItem('cart'); 
 
@@ -27,11 +26,7 @@ setSubtotal(total)
 },[storedCart])
  
 const handleCheckout = ()=>{
-  if(!isLogenIn){
-    navigate("/user/signin")
-  }else {
     navigate("/payments/checkout")
-  }
 }
 
   return(

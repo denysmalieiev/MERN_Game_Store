@@ -13,7 +13,7 @@ const featured = data[1]
   return ( 
     <> 
     {
-      data.length>0?( <div className="bg-white rounded-lg  shadow-md relative md:w-fit  w-screen md:h-333">
+      data.length>0?( <div className="bg-white rounded-lg  shadow-md relative md:w-fit  w-screen md:h-[359px]">
       <img 
         src={featured.img}
         alt="Featured Game"
@@ -32,7 +32,7 @@ const featured = data[1]
         View Game
       </Link> 
       </div>
-    </div> ):(<div>wait..</div>)
+    </div> ):(<div></div>)
     }
 
     </>
