@@ -13,7 +13,7 @@ function App() {
 
   return (
     <>
-    <div className="h-[100%] bg-blue-100">
+    <div className="h-[100%] bg-purple-100 bg-opacity-50">
     <AuthProvider>
     <BrowserRouter>
     <Routes> 

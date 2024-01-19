@@ -12,12 +12,12 @@ const navigate = useNavigate()
     <>
     <div className=" relative sticky top-0 z-50 w-screen">
     <section className="flex flex-row items-center bg-white p-3 justify-between  shadow-sm z-10 w-[100%]">
-    <Link to="/" className="font-bold text-purple-500 flex items-center"><span className="bg-purple-500 text-white font-extralight text-2xl w-fit h-fit px-1 rounded">S</span>games</Link> 
+    <Link to="/" className="font-bold text-purple-700 flex items-center"><span className="bg-purple-700 text-white font-extralight text-2xl w-fit h-fit px-1 rounded">S</span>games</Link> 
     <div className="hidden md:block">
       <SearchBar/> 
       </div>
        <div className=" flex flex-row justify-between items-center md:w-36 w-28"> 
-    {!isLogedin&&(<button className="bg-blue-500 text-xs font-bold rounded text-white p-2 ml-2 shadow-md" onClick={signIn}>Log in</button> )}
+    {!isLogedin&&(<button className="bg-purple-600 text-xs font-bold rounded text-white p-2 ml-2 shadow-md" onClick={signIn}>Log in</button> )}
     <Link to="/cart"><img src={cartImg} /></Link> 
     </div>
     </section> 

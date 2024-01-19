@@ -20,7 +20,7 @@ type ApiData = {
   return (
     <> 
         <div className="overflow-scroll">
-<div className="grid grid-cols-2 md:grid-cols-3 md:gap-2 gap-2  p-2  w-max">
+<div className="grid grid-cols-2 md:grid-cols-3 md:gap-15 gap-2  p-2   w-max md:items-center ">
         {
           games.length>0?games.map((item)=>{
             return(
