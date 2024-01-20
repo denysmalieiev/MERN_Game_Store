@@ -13,7 +13,7 @@ type Context ={
 const Authcontext = createContext<Context>({}as Context) 
 
 export const AuthProvider = ({children}:Childern)=>{
-  const [logedIn,setLogedin]=useState(true) 
+  const [logedIn,setLogedin]=useState(false) 
   const login = ()=>{
     setLogedin(true)
   } 
