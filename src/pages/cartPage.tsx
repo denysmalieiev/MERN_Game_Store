@@ -1,7 +1,7 @@
-import {Header} from "../components/header"  
+import {Header} from "../components/header"   
 import {useNavigate} from "react-router-dom"
 import {useState,useEffect} from "react"
- import {Count} from "../components/reusable/gameCard" 
+ import {Count} from "../components/reusable/gameCard"  
  import {Cart_card} from "../components/cart/cartCard"
  
  
@@ -11,7 +11,6 @@ import {useState,useEffect} from "react"
    const navigate = useNavigate()
    const [subtotal,setSubtotal]=useState(0)
 const storedCart = localStorage.getItem('cart'); 
-
 useEffect(()=>{ 
   let total = 0
   if(storedCart){
@@ -25,13 +24,18 @@ setSubtotal(total)
   }
 },[storedCart])
  
-const handleCheckout = ()=>{
+const handleCheckout = ()=>{ 
+  if(data.length<1){
+    return
+  }
     navigate("/payments/checkout")
 }
 
   return(
     <> 
      <Header/>
+    {
+      data.length>0?(
     <section className="w-screen bg-gray-100 pb-32 md:flex md:flex-row-reverse ">
    
     <div className="md:w-2/5 md:bg-white md:rounded md:p-2 md:h-fit md:my-4 md:mx-2 md:items-center">
@@ -49,9 +53,9 @@ const handleCheckout = ()=>{
    </section>
    
     <div className="w-screen flex items-center justify-center md:hidden">
-    <button className=" bg-purple-500 w-64 p-3 mt-3 rounded text-white font-bold md:hidden " onClick={handleCheckout}>check out</button>
+ <button className=" bg-purple-500 w-64 p-3 mt-3 rounded text-white font-bold md:hidden " onClick={handleCheckout}>check out</button>
     </div>
-    </section> 
+    </section> ):(<div className="font-extralight text-red-500 text-4xl h-screen mt-10 ml-8 ">Cart is Empty!!! </div>)}
     </>
     )
 }
