@@ -11,6 +11,9 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.0.1",
+    "@stripe/react-stripe-js": "^2.4.0",
+    "@stripe/stripe-js": "^2.4.0",
+    "formik": "^2.4.5",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
     "react": "^18.2.0",

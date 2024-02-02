@@ -5,7 +5,10 @@ import { fetchGames } from "../redux/getGamesSlice";
 import { Header } from "../components/header";
 import { useParams } from "react-router-dom";
 import { DetailsCard } from "../components/detailsPageComponents/detailsCard";
-import { GameInfo } from "../components/detailsPageComponents/gameInfo";
+import { GameInfo } from "../components/detailsPageComponents/gameInfo"; 
+import {Footer} from "../components/footer"
+
+
 
 const DetailsPage = () => { 
   const {title} = useParams() 
@@ -30,8 +33,9 @@ const selected = filtered[0]
             <div className="w-screen md:h-[320px] h-[333px] bg-black"></div>
             <GameInfo selected={selected} />
           </div>
-        </div>
-      </div>
+        </div> 
+      </div> 
+      <Footer/>
     </>
   );
 };

@@ -6,7 +6,7 @@ import { fetchGames } from "../redux/getGamesSlice";
 import {MiniMenu} from "../components/minimenu"
 import {Promo} from "../components/promo"
 import Display_games from "../components/reusable/displayGames"
-
+import {Footer} from "../components/footer"
 
 
  export const HomePage = ()=>{
@@ -52,7 +52,8 @@ const upComingGames = data.filter((_item,index)=>index<10&&index>5)
   <Display_games games={upComingGames}/>
         </div>
 
-     </div>
+     </div> 
+     <Footer/>
      </>
      )
  }
