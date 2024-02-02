@@ -10,7 +10,7 @@ export const Footer = ()=>{
 <div>© 2024 Sony Interactive Entertainment</div> 
 
 <div className="text-sm">All content, games titles, trade names and/or trade dress, trademarks, artwork and associated imagery are trademarks and/or copyright material of their respective owners. All rights reserved.</div>
-<div className="md:grid md:grid-cols-3 ">
+<div className="grid md:grid-cols-3 grid-cols-2 space-x-4">
 
 <div className="flex flex-col space-y-2">
 <div className="font-bold text-white">About</div>
