@@ -1,83 +1,105 @@
-import {Link,useNavigate} from "react-router-dom"
-import {useState} from "react" 
+import {Formik,Form,Field,ErrorMessage} from "formik"
+import {useState,useEffect} from "react"   
 import {useAuth} from "../context/authContext" 
+import {useNavigate,Link} from "react-router-dom"
 
-type LogIn = {
+type User =  {
   email:string,
   password:string,
+  name:string
+}
+
+type InitialV = {
+  email:string,
+  password:string,
+} 
+
+const REQUIRED = "This field is required"
+
+const initialValues:InitialV = {
+  email:"",
+  password:""
 }
 
 
-const SignInPage = () => {  
-  const [input,setInput] = useState({email:"",password:"",valid:true});
-  const navigate = useNavigate()
-  const auth = useAuth()
-const loginInfo = localStorage.getItem("account");
+const  SignInPage = ()=>{ 
+  const navigate =useNavigate()
+  const [user,setUser]= useState<User>({}as User)
+const auth = useAuth()
 
-  const handleSignIn = () => {
-    try{
-if(loginInfo){
-  const logindata:LogIn = JSON.parse(loginInfo) 
-  if(logindata.email===input.email&&logindata.password === input.password){ 
-    auth.login()
-     navigate("/",{replace:true}) 
-  }
-}
-    
-if(input.email===""||input.password===""){setInput({email:input.email,password:input.password,valid:false})
-} else{
-  setInput({email:input.email,password:input.password,valid:true})
+ useEffect(()=>{
+   const localUser = localStorage.getItem("account") 
+   if(localUser){
+     const validUser = JSON.parse(localUser)
+     setUser(validUser)
+   }
+ },[]) 
+ 
+ const login = (userEl:InitialV)=>{
+   if(userEl.email===user.email&&userEl.password){ 
+     auth.login()
+     navigate("/")
+   }else{
+     alert("invalid user")
+   }
+ }
   
-}}catch (err){alert(err)}
-
-  };
-
   return (
+    <>
     <div className="min-h-screen flex items-center justify-center bg-gray-100"> 
       <div className="bg-white p-8 rounded shadow-md w-96">
-        <h2 className="text-3xl font-light text-center mb-6 text-purple-700">Welcome to Game Store</h2> 
-    {
-      !input.valid&&(<div className="font-bold text-red-600 text-sm  m-4 rounded bg-red-100 bg-opacity-50 p-1">Password or email is wrong !!!</div>)
-    }
-        <form>
-          <div className="mb-6">
-            <label htmlFor="email" className="block text-sm font-semibold mb-2 text-gray-800">
+        <h2 className="text-3xl font-light text-center mb-6 text-purple-700">Welcome to Game Store</h2>  
+        <Formik 
+        initialValues={initialValues} 
+        validate={(values:InitialV)=>{
+          const errors = {} as InitialV 
+          if (!values.email) {
+          errors.email = REQUIRED;
+        } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+          errors.email = 'Invalid email address';
+        } 
+        if(!values. password){
+          errors.password= REQUIRED
+        }else if(values.password.length<5){
+          errors.password="Password must have at least 6 characters"
+        }  
+        return errors
+        }} 
+        onSubmit={(values,{setSubmitting})=>{ 
+        login(values)
+          setTimeout(()=>{
+            setSubmitting(false)
+login(values)
+          },400)
+        }}
+        >
+        {
+          ({isSubmitting})=>(
+          <Form className="space-y-3"> 
+           <label htmlFor="email" className="block text-sm font-semibold mb-2 text-gray-800">
               Email Address
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email" 
-              value={input.email}
-              onChange={(e:any)=>setInput({email:e.target.value, password:input. password,valid:input.valid})}
-              className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-purple-500"
-              placeholder="your.email@example.com"
-              required
-            />
-          </div>
-          <div className="mb-6">
-            <label htmlFor="password" className="block text-sm font-semibold mb-2 text-gray-800">
+            </label> 
+            <Field type="text" name="email" className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-purple-500"
+              placeholder="your.email@example.com" /> 
+              <ErrorMessage name="email" component="div" className="text-red-500 text-sm font-bold"/> 
+              
+           <label htmlFor="email" className="block text-sm font-semibold mb-2 text-gray-800">
               Password
-            </label>
-            <input
-              type="password"
-              id="password"
-              name="password" 
-              value={input.password}
-              onChange={(e:any)=>setInput({password:e.target.value, email:input.email,valid:input.valid})}
-              className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-purple-500"
-              placeholder="********"
-              required
-            />
-          </div>
+            </label> 
+            <Field type="text" name="password" className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-purple-500"
+              placeholder="******" /> 
+              <ErrorMessage name="password" component="div" className="text-red-500 text-sm font-bold"/> 
           <button
-            type="button"
-            onClick={handleSignIn}
+            type="submit"
+            disabled={isSubmitting}
             className="bg-purple-700 text-white w-full py-2 rounded hover:bg-purple-800 focus:outline-none"
           >
             Sign In
           </button>
-        </form>
+          </Form>
+          )
+        }
+        </Formik> 
         <div className="mt-4 text-center">
           <p className="text-sm text-gray-700">
             New to Game Store?{' '}
@@ -86,9 +108,12 @@ if(input.email===""||input.password===""){setInput({email:input.email,password:i
             </Link>
           </p>
         </div>
-      </div>
-    </div>
-  );
-};
+        </div>
+        </div>
+    </>
+    )
+}
+
+
 
 export default SignInPage;
