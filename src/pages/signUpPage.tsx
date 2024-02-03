@@ -1,84 +1,90 @@
+import {Formik,Form,Field,ErrorMessage} from "formik" 
 import {Link,useNavigate} from "react-router-dom"
-import {useState} from "react" 
 
-const SignUpPage = () => {
-const [input,setInput] = useState({email:"",password:"",valid:true,name:""});
-const navigate = useNavigate()
 
- 
-  const handleSignUp = () => {
-    
-if(input.email===""||input.password===""||input.name===""){
-setInput({email:input.email,password:input.password,valid:false,name:input.name})
-}else{
-  localStorage.setItem("account",JSON.stringify({email:input. email,password:input.password}))
-setInput({email:input.email,password:input.password,valid:true,name:input.name})
-   navigate("/user/signin")
+export type InitialV = {
+  email:string,
+  password:string,
+  name:string
 }
-  
-  };
 
-  return (
+const REQUIRED = "This field is required"
+
+const initialValues:InitialV = {
+  email:"",
+  password:"",
+  name:""
+}
+
+
+const SignUpPage = ()=>{
+  
+  const navigate = useNavigate()
+  
+  return(
+    <>
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded shadow-md w-96">
-        <h2 className="text-4xl font-extrabold text-center mb-6 text-blue-700">Join Game Store</h2> 
-    {
-      !input.valid&&(<div className="font-bold text-red-600 text-sm  m-4 rounded bg-red-100 bg-opacity-50 p-1">All fields should be filled please!!!</div>)
-    }
-        <form>
-          <div className="mb-6">
-            <label htmlFor="fullName" className="block text-sm font-semibold mb-2 text-gray-800">
-              Full Name
-            </label>
-            <input
-              type="text"
-              id="fullName"
-              name="fullName" 
-value={input.name}
-onChange={(e:any)=>{setInput({email:input.email,password:input.password,name:e.target.value,valid:true})}}
-              className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-purple-500"
-              placeholder="John Doe"
-              required
-            />
-          </div>
-          <div className="mb-6">
-            <label htmlFor="email" className="block text-sm font-semibold mb-2 text-gray-800">
-              Email Address
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email" 
-value={input.email}
-onChange={(e:any)=>{setInput({email:e.target.value,password:input.password,name:input.name,valid:true})}}
-              className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-purple-500"
-              placeholder="your.email@example.com"
-              required
-            />
-          </div>
-          <div className="mb-6">
-            <label htmlFor="password" className="block text-sm font-semibold mb-2 text-gray-800">
+        <h2 className="text-4xl font-extrabold text-center mb-6 text-blue-700">Join Game Store</h2>  
+        
+        <Formik 
+        initialValues={initialValues}
+        validate={(values:InitialV)=>{
+          const errors:InitialV = {} as InitialV 
+          if(!values.name){
+            errors.name = REQUIRED
+          } 
+          if (!values.email) {
+          errors.email = REQUIRED;
+        } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+          errors.email = 'Invalid email address';
+        } 
+        if(!values. password){
+          errors.password= REQUIRED
+        }else if(values.password.length<5){
+          errors.password="Password must have at least 6 characters"
+        } 
+        return errors
+        }} 
+        
+        onSubmit={(values,{setSubmitting})=>{ 
+          localStorage.setItem("account",JSON.stringify(values))
+          setTimeout(()=>{
+setSubmitting(false); 
+          navigate("/user/signin",{replace:true})
+          },400)
+        }}
+        > 
+        {({isSubmitting})=>(
+        <Form className="space-y-3">  
+        <div className="block text-sm font-semibold mb-2 text-gray-800">
+              Email
+            </div>
+        <Field type="text" name="email" placeholder="Enter your email address..." className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-purple-500"/> 
+        <ErrorMessage name="email" component="div" className="text-red-500 text-sm font-bold"/> 
+        
+        <div className="block text-sm font-semibold mb-2 text-gray-800">
+              Full name
+            </div>
+        <Field type="text" name="name" placeholder="Enter your full name..." className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-purple-500"/>
+        <ErrorMessage name="name" component="div" className="text-red-500 text-sm font-bold"/>  
+        
+        <div className="block text-sm font-semibold mb-2 text-gray-800">
               Password
-            </label>
-            <input
-              type="password"
-              id="password"
-              name="password" 
-value={input.password} 
-onChange={(e:any)=>{setInput({email:input.email,password:e.target.value,name:input.name,valid:true})}}
-              className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-purple-500"
-              placeholder="********"
-              required
-            />
-          </div>
+            </div>
+        <Field type="text" name="password" placeholder="Enter your password..." className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-purple-500"/> 
+        <ErrorMessage name="password" component="div" className="text-red-500 text-sm font-bold"/> 
+        
           <button
-            type="button"
-            onClick={handleSignUp}
-            className="bg-blue-700 text-white w-full py-2 rounded hover:bg-blue-800 focus:outline-none"
+            type="submit"
+            disabled={isSubmitting}            className="bg-blue-700 text-white w-full py-2 rounded hover:bg-blue-800 focus:outline-none"
           >
             Sign Up
           </button>
-        </form>
+        </Form>)}
+        </Formik>
+        
+        
         <div className="mt-4 text-center">
           <p className="text-sm text-gray-700">
             Already have an account?{' '}
@@ -87,9 +93,10 @@ onChange={(e:any)=>{setInput({email:input.email,password:e.target.value,name:inp
             </Link>
           </p>
         </div>
-      </div>
-    </div>
-  );
-};
+        </div>
+        </div>
+    </>
+    )
+}
 
 export default SignUpPage;
