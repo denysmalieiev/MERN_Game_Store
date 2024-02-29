@@ -11,7 +11,7 @@ import SignInPage from "./pages/signInPage"
 import SignUpPage from "./pages/signUpPage"
 import CheckoutForm from "./pages/checkOutPage"
 
-const stripePromise = loadStripe(import.meta.env.VITE_PUBLIC_STRIPE_PUBLISHABLE_KEY);
+const stripePromise = loadStripe(import.meta.env.VITE_PUBLIC_STRIPE_PUBLISHABLE);
 
 function App() {
 const options:StripeElementsOptions = {
