@@ -1,4 +1,6 @@
 import {Routes, Route,BrowserRouter} from "react-router-dom"  
+import {Elements} from '@stripe/react-stripe-js';
+import {loadStripe,StripeElementsOptions} from '@stripe/stripe-js';
 import {AuthProvider} from "./context/authContext" 
 import {Authentication} from "./pages/requiresAuth"
 import Homepage from "./pages/homepage"
@@ -9,10 +11,22 @@ import SignInPage from "./pages/signInPage"
 import SignUpPage from "./pages/signUpPage"
 import CheckoutForm from "./pages/checkOutPage"
 
+const stripePromise = loadStripe(import.meta.env.VITE_PUBLIC_STRIPE_PUBLISHABLE_KEY);
+
 function App() {
+const options:StripeElementsOptions = {
+  mode: 'payment',
+  amount: 1099,
+  currency: 'usd',
+  appearance: {
+   
+  },
+};
+
 
   return (
-    <>
+    <> 
+    <Elements stripe={stripePromise} options={options}>
     <div className="h-[100%] bg-purple-100 bg-opacity-50">
     <AuthProvider>
     <BrowserRouter>
@@ -30,7 +44,8 @@ function App() {
     </Routes> 
     </BrowserRouter> 
    </AuthProvider>
-    </div>
+    </div> 
+    </Elements>
     </>
   )
 }

@@ -75,7 +75,8 @@ login(values)
         >
         {
           ({isSubmitting})=>(
-          <Form className="space-y-3"> 
+          <Form className="space-y-3">
+         <div>Create your account</div>
            <label htmlFor="email" className="block text-sm font-semibold mb-2 text-gray-800">
               Email Address
             </label> 

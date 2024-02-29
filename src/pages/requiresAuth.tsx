@@ -6,7 +6,7 @@ type Childern = {
 
 export const Authentication = ({children}:Childern)=>{
   const auth = useAuth() 
-  if(!auth.isLogedin()){
+  if(auth.isLogedin()){
     return <Navigate to="/user/signin" replace/>
   } 
   return children

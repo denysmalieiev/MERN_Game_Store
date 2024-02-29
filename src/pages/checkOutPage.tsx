@@ -1,23 +1,13 @@
 import {PaymentElement} from '@stripe/react-stripe-js';
-import {Elements} from '@stripe/react-stripe-js';
-import {loadStripe} from '@stripe/stripe-js';
 
-
-const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
-
-
-const CheckoutForm = () => { 
-const options = {
-    clientSecret: '{{CLIENT_SECRET}}',
-  };
-
+const CheckoutForm = () => {
   return ( 
-<Elements stripe={stripePromise} options={options}>
-    <form>
+    <div className="bg-gray-100 min-h-screen flex items-center justify-center">
+    <form className="bg-white p-4">
       <PaymentElement />
       <button>Submit</button>
     </form> 
-    </Elements>
+    </div>
   );
 };
 

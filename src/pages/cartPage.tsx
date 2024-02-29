@@ -6,9 +6,9 @@ import {useState,useEffect} from "react"
  
  
  
- const CartPage = ()=>{ 
-   const [data,setData]=useState<Count[]>([])  
+ const CartPage = ()=>{  
    const navigate = useNavigate()
+   const [data,setData]=useState<Count[]>([])  
    const [subtotal,setSubtotal]=useState(0)
 const storedCart = localStorage.getItem('cart'); 
 useEffect(()=>{ 
@@ -30,6 +30,7 @@ const handleCheckout = ()=>{
   }
     navigate("/payments/checkout")
 }
+
 
   return(
     <> 
@@ -53,7 +54,9 @@ const handleCheckout = ()=>{
    </section>
    
     <div className="w-screen flex items-center justify-center md:hidden">
+    <div className="w-screen flex items-center justify-center md:hidden">
  <button className=" bg-purple-500 w-64 p-3 mt-3 rounded text-white font-bold md:hidden " onClick={handleCheckout}>check out</button>
+    </div>
     </div>
     </section> ):(<div className="font-extralight text-red-500 text-4xl h-screen mt-10 ml-8 ">Cart is Empty!!! </div>)}
     </>
