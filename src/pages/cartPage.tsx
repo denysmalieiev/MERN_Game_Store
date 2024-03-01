@@ -1,4 +1,5 @@
-import {Header} from "../components/header"   
+import {Header} from "../components/header"    
+import {useAuth} from "../context/authContext" 
 import {useNavigate} from "react-router-dom"
 import {useState,useEffect} from "react"
  import {Count} from "../components/reusable/gameCard"  
@@ -9,7 +10,8 @@ import {useState,useEffect} from "react"
  const CartPage = ()=>{  
    const navigate = useNavigate()
    const [data,setData]=useState<Count[]>([])  
-   const [subtotal,setSubtotal]=useState(0)
+   const [subtotal,setSubtotal]=useState(0) 
+   const {setpay} = useAuth()
 const storedCart = localStorage.getItem('cart'); 
 useEffect(()=>{ 
   let total = 0
@@ -27,7 +29,8 @@ setSubtotal(total)
 const handleCheckout = ()=>{ 
   if(data.length<1){
     return
-  }
+  } 
+  setpay(subtotal)
     navigate("/payments/checkout")
 }
 
