@@ -24,7 +24,7 @@ export const HomePage = () => {
     <>
       <Header />
       <div className='overflow-hidden w-screen'>
-        <div className='md:flex md:flex-row-reverse md:items-center '>
+        <div className='md:flex md:flex-row-reverse bg-black md:items-center '>
           {data.length > 0 ? (
             <Promo data={recommendedGames} />
           ) : (
