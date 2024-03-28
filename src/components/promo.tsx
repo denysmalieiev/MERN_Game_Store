@@ -6,14 +6,20 @@ type Data = {
 };
 
 export const Promo = ({ data }: Data) => {
-  const featured = data[4];
+  const random = Math.random();
+  let featured;
+  if (random < 0.5) {
+    featured = data[1];
+  } else {
+    featured = data[4];
+  }
 
   return (
     <>
       {data.length > 0 ? (
         <div
           style={{ backgroundImage: `url(${featured.img})` }}
-          className={`rounded-lg  shadow-md relative    md:object-center md:bg-cover md:bg-no-repeat  md:h-[80vh]`}
+          className={`  shadow-md relative    md:object-center md:bg-cover md:bg-no-repeat  md:h-[80vh]`}
         >
           <img
             src={featured.img}

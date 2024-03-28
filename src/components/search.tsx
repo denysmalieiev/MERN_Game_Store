@@ -8,9 +8,9 @@ export const SearchBar = () => {
   const navigate = useNavigate();
   return (
     <>
-      <div className=' p-2 items-center flex flex-row relative  bg-white '>
+      <div className=' p-2 items-center flex flex-row relative  bg-white md:w-[100%]'>
         <input
-          className='md:w-80  outline-none rounded bg-opacity-80 bg-purple-100 placeholder-purple-600   p-2 w-screen'
+          className='  outline-none rounded bg-opacity-80 bg-purple-100 placeholder-purple-600 md:w-[100%]   p-2 w-screen'
           value={input}
           placeholder='search...'
           onChange={(e: any) => setInput(e.target.value)}
