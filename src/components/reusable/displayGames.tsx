@@ -22,7 +22,7 @@ const Display_games = ({ games }: ApiData) => {
         <div className='flex flex-row justify-between overflow-scroll'>
           {games.length > 0 ? (
             games.map((item) => {
-              return <Game_card data={item} />;
+              return <Game_card data={item} key={item.img} />;
             })
           ) : (
             <Waiting_Api />
