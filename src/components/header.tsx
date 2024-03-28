@@ -2,7 +2,9 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { SearchBar } from "./search";
 import cartImg from "../assets/cart-shopping-fast-svgrepo-com.svg";
+import { useState } from "react";
 export const Header = () => {
+  const [dropDown, setDropdown] = useState(false);
   const navigate = useNavigate();
   const localUser = localStorage.getItem("account");
   const signIn = () => {
@@ -18,10 +20,35 @@ export const Header = () => {
             </span>
             games
           </Link>
-          <div className='hidden md:block'>
+          <div className='hidden md:block md:w-2/5'>
             <SearchBar />
           </div>
-          <div className=' flex flex-row justify-between items-center md:w-36 w-28'>
+          <div className=' flex flex-row justify-between items-center md:w-1/5 w-28'>
+            <div className='hidden md:block relative'>
+              <span onClick={() => setDropdown(!dropDown)}>Categories</span>
+              {dropDown && (
+                <div className='absolute top-10 flex flex-col spacey-3 font-bold text-gray-500 text-sm bg-white w-fit p-2 shadow-md rounded-lg'>
+                  <Link
+                    to={"/category/Action"}
+                    className='hover:text-purple-600 hover:bg-purple-100 w-[100] rounded-md my-1 px-2'
+                  >
+                    Action
+                  </Link>
+                  <Link
+                    to={"/category/Race"}
+                    className='hover:text-purple-600 hover:bg-purple-100 w-[100] rounded-md my-1 px-2'
+                  >
+                    Race
+                  </Link>
+                  <Link
+                    to={"/category/sports"}
+                    className='hover:text-purple-600 hover:bg-purple-100 w-[100] rounded-md my-1 px-2'
+                  >
+                    Sports
+                  </Link>
+                </div>
+              )}
+            </div>
             {!localUser ? (
               <button
                 className='bg-purple-600 text-xs font-bold rounded text-white p-2 ml-2 shadow-md'
