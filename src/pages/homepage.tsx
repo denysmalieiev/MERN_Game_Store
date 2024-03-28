@@ -24,11 +24,14 @@ export const HomePage = () => {
     <>
       <Header />
       <div className='overflow-hidden w-screen'>
-        <div className='md:flex md:flex-row-reverse bg-black md:items-center '>
+        <div className=''>
           {data.length > 0 ? (
             <Promo data={recommendedGames} />
           ) : (
-            <div className=' md:w-screen md:block hidden md:bg-slate-800 md:animate-pulse md:h-[359px] '></div>
+            <div className=' md:w-screen md:block hidden md:bg-slate-800 md:animate-pulse md:h-[359px] '>
+              {" "}
+              {/*this line  creates a waiting skeleton */}
+            </div>
           )}
 
           <MiniMenu />

@@ -6,16 +6,19 @@ type Data = {
 };
 
 export const Promo = ({ data }: Data) => {
-  const featured = data[1];
+  const featured = data[9];
 
   return (
     <>
       {data.length > 0 ? (
-        <div className=' rounded-lg  shadow-md relative md:w-fit  w-screen md:h-fit'>
+        <div
+          style={{ backgroundImage: `url(${featured.img})` }}
+          className={`rounded-lg  shadow-md relative    md:object-center md:bg-cover md:bg-no-repeat  md:h-[80vh]`}
+        >
           <img
             src={featured.img}
             alt='Featured Game'
-            className='w-screen h-[100%] md:h-[23rem] '
+            className='w-screen h-[100%]  md:hidden'
           />
           <div className='md:absolute md:top-0 w-[100%] md:h-[100%] p-6 md:bg-black md:bg-opacity-20 bg-white '>
             <h2 className='text-2xl font-semibold text-gray-600 md:text-gray-200 mb-2 '>
