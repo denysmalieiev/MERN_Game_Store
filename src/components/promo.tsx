@@ -6,7 +6,7 @@ type Data = {
 };
 
 export const Promo = ({ data }: Data) => {
-  const featured = data[9];
+  const featured = data[4];
 
   return (
     <>
