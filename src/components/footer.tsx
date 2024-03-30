@@ -63,7 +63,7 @@ export const Footer = () => {
 
           <div>
             <div className='font-bold text-white'>Contact Us</div>
-            <nav className=' flex md:flex-col items-center mr-2'>
+            <nav className=' flex md:flex-row items-center mr-2'>
               <a href='https://github.com/Shafiquedev256?tab=overview&from=2024-01-01&to=2024-01-30'>
                 <img src={githubLogo} />
               </a>

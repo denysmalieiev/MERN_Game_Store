@@ -32,22 +32,22 @@ export const GameInfo = ({ selected }: Selected) => {
       <h2 className='font-light text-2xl text-center text-white'>
         Game and Legal Info
       </h2>
-      <div className='text-white md:flex md:flex-row px-6 md:justify-evenly md:items-center '>
-        <div className='md:w-2/5 py-6 md:py-0'>
-          <div className='flex flex-row justify-between items-center    md:flex-col md:items-start'>
+      <div className='text-white md:flex md:flex-row px-6 md:justify-evenly md:items-center  '>
+        <div className='md:w-1/5 py-6 md:py-0'>
+          <div className='flex flex-row justify-between items-center  md:items-start'>
             <span>Platform</span>
             <span className='font-bold'>PS4</span>
           </div>
 
-          <div className='flex flex-row justify-between items-center   md:flex-col md:items-start'>
+          <div className='flex flex-row justify-between items-center md:items-start'>
             <span>Release:</span>
             <span className='font-bold '>12/23/24</span>
           </div>
-          <div className='flex flex-row justify-between items-center    md:flex-col md:items-start'>
+          <div className='flex flex-row justify-between items-center     md:items-start'>
             <span>Publisher:</span>
             <span className='font-bold '>Sony</span>
           </div>
-          <div className='flex flex-row justify-between items-center    md:flex-col md:items-start'>
+          <div className='flex flex-row justify-between items-center  md:items-start'>
             <span>Genre:</span>
             <span className='font-bold '>Action</span>
           </div>

@@ -1,12 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, Suspense, lazy } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "../redux/store";
 import { fetchGames } from "../redux/getGamesSlice";
 import { Header } from "../components/header";
 import { MiniMenu } from "../components/minimenu";
-import { Promo } from "../components/promo";
 import Display_games from "../components/reusable/displayGames";
 import { Footer } from "../components/footer";
+const Promo = lazy(() => import("../components/promo"));
 
 export const HomePage = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -24,18 +24,20 @@ export const HomePage = () => {
     <>
       <Header />
       <div className='overflow-hidden w-screen'>
-        <div className=''>
-          {data.length > 0 ? (
+        {recommendedGames.length > 0 ? (
+          <Suspense
+            fallback={
+              <div className=' md:w-screen md:block hidden md:bg-slate-800 md:animate-pulse md:h-[359px] '></div>
+            }
+          >
             <Promo data={recommendedGames} />
-          ) : (
-            <div className=' md:w-screen md:block hidden md:bg-slate-800 md:animate-pulse md:h-[359px] '>
-              {" "}
-              {/*this line  creates a waiting skeleton */}
-            </div>
-          )}
+          </Suspense>
+        ) : (
+          <div className=' md:w-screen md:block hidden md:bg-slate-800 md:animate-pulse md:h-[359px] '></div>
+        )}
 
-          <MiniMenu />
-        </div>
+        <MiniMenu />
+
         <div>
           <div className='bg-red-700  mb-2  text-white font-bold p-2'>
             Trending
