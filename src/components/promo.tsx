@@ -5,7 +5,7 @@ type Data = {
   data: ApiData[];
 };
 
-export const Promo = ({ data }: Data) => {
+const Promo = ({ data }: Data) => {
   const random = Math.random();
   let featured;
   if (random < 0.5) {
@@ -47,3 +47,5 @@ export const Promo = ({ data }: Data) => {
     </>
   );
 };
+
+export default Promo;
