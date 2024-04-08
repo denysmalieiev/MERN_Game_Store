@@ -5,7 +5,7 @@ import gmailLogo from "../assets/gmail-svgrepo-com.svg";
 export const Footer = () => {
   return (
     <>
-      <div className='bg-blue-600 bottom-0 h-fit text-gray-200 p-4 space-y-3 '>
+      <div className='bg-blue-600 bottom-0 h-fit text-gray-200 p-4 space-y-3  font-medium'>
         <div>© 2024 Sony Interactive Entertainment</div>
 
         <div className='text-sm'>
@@ -15,54 +15,66 @@ export const Footer = () => {
         </div>
         <div className='grid md:grid-cols-3 grid-cols-2 space-x-4'>
           <div className='flex flex-col space-y-2'>
-            <div className='font-bold text-white'>About</div>
-            <span className='text-sm'>About SIE </span>
-            <span className='text-sm'>Careers </span>
-            <span className='text-sm'>PlayStation Studios </span>
-            <span className='text-sm'>PlayStation Productions </span>
-            <span className='text-sm'>Corporate </span>
+            <div className='text-2xl text-white'>About</div>
+            <span className='text-sm hover:underline'>About SIE </span>
+            <span className='text-sm hover:underline'>Careers </span>
+            <span className='text-sm hover:underline'>
+              PlayStation Studios{" "}
+            </span>
+            <span className='text-sm hover:underline'>
+              PlayStation Productions{" "}
+            </span>
+            <span className='text-sm hover:underline'>Corporate </span>
           </div>
 
           <div className='flex flex-col space-y-2'>
-            <div className='font-bold text-white'>Products</div>
-            <span className='text-sm'>PS5 </span>
-            <span className='text-sm'>PS4 </span>
-            <span className='text-sm'>PS VR2 </span>
-            <span className='text-sm'>PS Plus </span>
+            <div className='text-2xl text-white'>Products</div>
+            <span className='text-sm hover:underline'>PS5 </span>
+            <span className='text-sm hover:underline'>PS4 </span>
+            <span className='text-sm hover:underline'>PS VR2 </span>
+            <span className='text-sm hover:underline'>PS Plus </span>
           </div>
 
           <div className='flex flex-col space-y-2'>
-            <div className='font-bold text-white'>Accessories</div>
-            <span className='text-sm'>Games </span>
-            <span className='text-sm'>Values </span>
-            <span className='text-sm'>Environment </span>
-            <span className='text-sm'>Accessibility </span>
-            <span className='text-sm'>Online safety </span>
-            <span className='text-sm'>Diversity, equity & inclusion </span>
+            <div className='text-2xl text-white'>Accessories</div>
+            <span className='text-sm hover:underline '>Games </span>
+            <span className='text-sm hover:underline'>Values </span>
+            <span className='text-sm hover:underline'>Environment </span>
+            <span className='text-sm hover:underline'>Accessibility </span>
+            <span className='text-sm hover:underline'>Online safety </span>
+            <span className='text-sm hover:underline'>
+              Diversity, equity & inclusion{" "}
+            </span>
           </div>
 
           <div className='flex flex-col space-y-2'>
-            <div className='font-bold text-white'>Support</div>
-            <span className='text-sm'>Support hub </span>
-            <span className='text-sm'>PlayStation Safety </span>
-            <span className='text-sm'>PSN Status </span>
-            <span className='text-sm'>PlayStation Repairs </span>
-            <span className='text-sm'>Password reset </span>
+            <div className='text-2xl text-white'>Support</div>
+            <span className='text-sm hover:underline'>Support hub </span>
+            <span className='text-sm hover:underline'>PlayStation Safety </span>
+            <span className='text-sm hover:underline'>PSN Status </span>
+            <span className='text-sm hover:underline'>
+              PlayStation Repairs{" "}
+            </span>
+            <span className='text-sm hover:underline'>Password reset </span>
           </div>
 
           <div className='flex flex-col space-y-2'>
-            <div className='font-bold text-white'>Manuals</div>
-            <span className='text-sm'>Resources </span>
-            <span className='text-sm'>PSN terms of service </span>
-            <span className='text-sm'>PS Store cancellation policy </span>
-            <span className='text-sm'>Age ratings </span>
-            <span className='text-sm'>Health warning </span>
-            <span className='text-sm'>Developers </span>
-            <span className='text-sm'>Glossary</span>
+            <div className='text-2xl text-white'>Manuals</div>
+            <span className='text-sm hover:underline'>Resources </span>
+            <span className='text-sm hover:underline'>
+              PSN terms of service{" "}
+            </span>
+            <span className='text-sm hover:underline'>
+              PS Store cancellation policy{" "}
+            </span>
+            <span className='text-sm hover:underline'>Age ratings </span>
+            <span className='text-sm hover:underline'>Health warning </span>
+            <span className='text-sm hover:underline'>Developers </span>
+            <span className='text-sm hover:underline'>Glossary</span>
           </div>
 
           <div>
-            <div className='font-bold text-white'>Contact Us</div>
+            <div className='text-2xl text-white'>Contact Us</div>
             <nav className=' flex md:flex-row items-center mr-2'>
               <a href='https://github.com/Shafiquedev256?tab=overview&from=2024-01-01&to=2024-01-30'>
                 <img src={githubLogo} />

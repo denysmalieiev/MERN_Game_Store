@@ -27,13 +27,13 @@ export const HomePage = () => {
         {recommendedGames.length > 0 ? (
           <Suspense
             fallback={
-              <div className=' md:w-screen md:block hidden md:bg-slate-800 md:animate-pulse md:h-[359px] '></div>
+              <div className=' md:w-screen md:block hidden md:bg-gray-300 md:animate-pulse md:h-[359px] '></div>
             }
           >
             <Promo data={recommendedGames} />
           </Suspense>
         ) : (
-          <div className=' md:w-screen md:block hidden md:bg-slate-800 md:animate-pulse md:h-[359px] '></div>
+          <div className=' md:w-screen md:block hidden md:bg-gray-300 md:animate-pulse md:h-[359px] '></div>
         )}
 
         <MiniMenu />
